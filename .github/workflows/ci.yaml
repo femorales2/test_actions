@@ -9,8 +9,10 @@ jobs:
   build-next:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
+      - name: Checkout PR branch
         uses: actions/checkout@v4
+        with:
+            ref: ${{ github.event.pull_request.head.sha }}
       - name: Install dependencies
         run: npm i
       - name: Build FE
